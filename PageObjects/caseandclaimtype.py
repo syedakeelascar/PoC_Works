@@ -1,0 +1,5 @@
+name = "c531d79a16f9657433887fb4c43fbed4-radioSelect"
+value = "Retrenchment"
+claim_type = "id:b04d5cb82eaf1553b39113530a877168_value"
+btn_submit = "xpath://button[text() = 'submit']"
+header = "Select Case and Claim Type"
