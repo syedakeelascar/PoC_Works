@@ -12,7 +12,7 @@ Click On File A Case
      press keys    None  ENTER
 
 Click on My Case
-    set selenium speed    2
+
     click element    ${my_case}
 
 Employer Dashboard Header Validate
@@ -20,7 +20,7 @@ Employer Dashboard Header Validate
     page should contain    ${Employer_header}
 
 Click on Case Id In Employer Home Page
-    set selenium speed    3
+
     click element    ${caseid}
 
 
