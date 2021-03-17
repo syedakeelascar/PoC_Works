@@ -57,7 +57,7 @@ Enter Remarks
 Select Reason For Not Acepting
     [Documentation]    Randomly selects a reason for not accepting the claim.
     ${reason}=    get random item from list    ${reasons}
-    click element    //label[contains(@class,'RadioSelect') and text()='${reason}']
+    click element    //label[contains(@class,'RadioSelect') and text()="${reason}"]
 
 
 Click On Submit Button
