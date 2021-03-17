@@ -17,7 +17,7 @@ Close my browser
 Username field
     [Arguments]  ${username}
     #wait until page contains  LOGIN Panel
-    sleep  3
+#    sleep  3
     input text  ${txt_un}  ${username}
 
 Password field
