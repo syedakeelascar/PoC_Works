@@ -1,17 +1,14 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables  ../PageObjects/acknowladgement.py
+Variables  ../PageObjects/acknowledgementPage.py
 
 *** Keywords ***
-Acknowladgement page header
+Validate Acknowledgement page header
+    page should contain element    ${acknowledgement_header}
 
-    page should contain    ${acknowledgement_header}
 
-Verify Claim Submited
-
-    page should contain    ${claim_submited}
-
-Verify Registration Fee Paid
-
-    page should contain    ${paid_fees}
+Verify Success Message For Claim Submission
+    wait until element is visible    ${print_acknowledgement_button}    10s
+    page should contain element    ${claim_submited}
+    page should contain element    ${paid_fees}
 

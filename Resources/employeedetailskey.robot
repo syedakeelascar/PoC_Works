@@ -3,10 +3,5 @@ Library  SeleniumLibrary
 Variables  ../PageObjects/employeedetails.py
 
 *** Keywords ***
-Employee Details page header validation
-
-    page should contain    ${pge_ed_header}
-
-Click on continue button
-
-    click element    ${btn_continue}
+Validate Employee Details page header
+    page should contain element    ${pge_ed_header}

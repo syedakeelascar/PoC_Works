@@ -20,3 +20,8 @@ IntelliBot Plugin setup for selenium version greater than 4
 
 
 For version lower than 4, install "Intellibot @SeleniumLibrary Patched"
+
+
+Command to run the Test Case: robot <test_case.robot>
+
+Example: robot --outputdir ./results/localtest TestCase/Employee.robot

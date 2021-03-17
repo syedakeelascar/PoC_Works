@@ -1,53 +1,47 @@
 *** Settings ***
-Library  SeleniumLibrary
 Resource  ../Resources/loginkey.robot
 Resource  ../Resources/hompagekey.robot
 Resource  ../Resources/employerclaimsummary.robot
 Resource  ../Resources/employereverification.robot
 Variables  ../TestData/testd.py
 
+
+Suite Setup    Open application
+#Suite Teardown    Close All Browsers
+
+Documentation    Login as a Employer, Validate a claim, submit dispute and logout from the application.
 *** Test Cases ***
-Open Url
-    Open appliaction
-
-Login To Application
+As an Employer, Login To Application
     [Tags]  sanity  regression
-    Given Username field  ${employer_username}
-    And Password field  ${employer_password}
-    When Click On Login Button
-    Then Employer Dashboard Header Validate
+    When Login To iWorks Application    ${employer_username}    ${employer_password}
+    Then Validate Successful Login
 
-Validate Claim Summary page header
+
+Open a case and Validate Claim Summary page header
+    [Setup]   Fail Workflow If Previous Step Failed
     Given Click on My Case
     When Click on Case Id In Employer Home Page
-    Then Employee Claim Summary Header Validation
+    Then Validate Employee Claim Summary Header
 
-Validate Base Claim Details
+
+Start e-verification for selected case
+    [Setup]   Fail Workflow If Previous Step Failed
     Given Click On Related Actions
     When Click on E-Verification
     Then Validate Base Claim Details Is Present
 
-Validate Cliam has been submitted and sent to Claimant Message
-    Given Click On Base Pay
-    And Actual Base Pay Information  ${orgbpay}
-    When Click On Overtime Hours
-    And Actual Overtime Hours   ${overtime}
-    And Click on Cliam Amount
-    And Actual Claim Amount  ${orgclaimamount}
-    And Enter Remarks  ${orgremarks}
-    And Click On Reason For Not Acepting
-    And Click On Submit Button
-    Then Validate Sucessful Dispute Claim has been submitted and sent to Claimant Message
 
-Close The present Browser
-  Close my browser
+Provide the Basic Claim details and Submit
+    [Setup]   Fail Workflow If Previous Step Failed
+    Given Select Basic Pay and Enter Details
+    When Select Overtime Hours and Enter Details
+    And Select Claim Amount and Enter Details
+    And Enter Remarks
+    And Select Reason For Not Acepting
+    Then Click On Submit Button
 
 
-
-
-
-
-
-
-
-
+Validate Dispute Claim Submission and Log out from application
+    [Setup]   Fail Workflow If Previous Step Failed
+    When Validate Sucessful Dispute Claim has been submitted and sent to Claimant Message
+    Then Logout From iWorks Application

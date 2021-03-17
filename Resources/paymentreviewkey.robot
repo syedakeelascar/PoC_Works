@@ -3,10 +3,16 @@ Library  SeleniumLibrary
 Variables  ../PageObjects/paymentreview.py
 
 *** Keywords ***
-Payment Review Header Name
+Validate Payment Review Page
+    wait until element is visible    ${case_ref_num}    10s
+    page should contain element    ${preview_header}
+    page should contain element    ${case_ref_num}
+    page should contain element    ${amount_payable}
 
-    page should contain    ${preview_header}
 
-Payment Review Click Button Make Payment
-
-    click element    ${bt_make_payment}
+Click On Make Payment Button
+    [Documentation]    Clicks on the 'Make Payment' button in the Payment Review page
+    wait until element is visible    ${make_payment_button}
+    Scroll Element Into View    ${make_payment_button}
+    sleep    1s
+    click button    ${make_payment_button}

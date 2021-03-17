@@ -1,38 +1,40 @@
 *** Settings ***
-Library  SeleniumLibrary
-Variables  ../PageObjects/logpag.py
-Variables  ../TestData/testd.py
+Library    SeleniumLibrary
+Variables    ../PageObjects/loginPage.py
+Variables    ../TestData/testd.py
 
 *** Keywords ***
-Open appliaction
-#    create webdriver    chrome    executable_path="..\driver\chromedriver.exe"
-    open browser    ${url}   ${browser}
+Open application
+    open browser    ${url}    ${browser}
     maximize browser window
-#    set selenium speed    3
-    set selenium timeout    30
+    Set Selenium Timeout    ${selenium_timeout}
+    Log To Console    Application opened: ${url}
 
-Close my browser
-    close browser
 
-Username field
-    [Arguments]  ${username}
-    #wait until page contains  LOGIN Panel
-#    sleep  3
-    input text  ${txt_un}  ${username}
+Enter Username
+    [Arguments]    ${username}
+    Input Text    ${txt_un}    ${username}
 
-Password field
-    [Arguments]  ${password}
-    Input text  ${txt_pw}  ${password}
+
+Enter Password
+    [Arguments]    ${password}
+    Input Password    ${txt_pw}    ${password}
+
 
 Click On Login Button
-    click element   ${bt_login}
+    click element    ${bt_login}
 
 
 Verify title of the page
-#    Title Should Be   OrangeHRM
-     set selenium speed    30
-     Title Should Be   HOME - iWork
+     Title Should Be    HOME - iWork
 
-Page header
-    set selenium speed    10
-    page should contain    Welcome, Kenneth!
+
+Login To iWorks Application
+    [Documentation]    Used to login to the application by navigating to the URL and then entering the username and password.
+    ...    The username and password values can be passed in as arguments
+    [Arguments]    ${username}    ${pwd}
+
+    Log To Console    Logging in to Application...${space}    no_newline=True
+    Enter Username    ${username}
+    Enter Password    ${pwd}
+    Click On Login Button
