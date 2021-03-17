@@ -7,7 +7,7 @@ Variables  ../TestData/testd.py
 
 
 Suite Setup    Open application
-#Suite Teardown    Close All Browsers
+Suite Teardown    Close All Browsers
 
 Documentation    Login as a Employer, Validate a claim, submit dispute and logout from the application.
 *** Test Cases ***
