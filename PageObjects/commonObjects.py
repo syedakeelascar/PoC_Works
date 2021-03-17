@@ -1,0 +1,5 @@
+continue_button = "//button[text() = 'Continue']"
+APPIAN_LOADER = "xpath://div[@id='appian-nprogress-parent']"
+SIGN_IN_BUTTON = "xpath://input[@value='Sign In']"
+USER_OPTION_MENU = "xpath://span[contains(@style,'background-image')]"
+SIGN_OUT_BUTTON = "xpath://*[text()='Sign Out']"

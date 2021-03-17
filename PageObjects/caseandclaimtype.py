@@ -1,5 +1,6 @@
-name = "c531d79a16f9657433887fb4c43fbed4-radioSelect"
-value = "Retrenchment"
-claim_type = "id:b04d5cb82eaf1553b39113530a877168_value"
+case_type_radio_button = "c531d79a16f9657433887fb4c43fbed4-radioSelect"
+claim_type_drop_down = "id:b04d5cb82eaf1553b39113530a877168_value"
 btn_submit = "xpath://button[text() = 'submit']"
-header = "Select Case and Claim Type"
+header = "xpath://span[text()='Select Case and Claim Type']"
+case_type_options = ['Salary related', 'Wrongful dismissal', 'Retrenchment']
+claim_type_options = ['Basic Salary', 'Non/Short Payment of Salary', 'Overtime Pay']

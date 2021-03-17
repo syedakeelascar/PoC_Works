@@ -1,2 +1,1 @@
-pge_ed_header = "Employee Details"
-btn_continue = "//button[text() = 'Continue']"
+pge_ed_header = "xpath://*[text()='Employee Details']"

@@ -1,29 +1,30 @@
 *** Settings ***
-Library  SeleniumLibrary
-Variables    ../PageObjects/homepage.py
+Library    SeleniumLibrary
+Resource    resources_common/common_keywords.resource
+Variables    ../PageObjects/homePage.py
 Variables    ../PageObjects/employermycase.py
-*** Keywords ***
-Click On File A Case
-    set selenium speed    1
-#    click image    ${fileacase}
-    : FOR   ${i}   IN RANGE    1   19
-     \  press keys    None  TAB
 
-     press keys    None  ENTER
+*** Keywords ***
+Validate Successful Login
+    Wait Until Element Is Visible    ${USER_OPTION_MENU}    20sec
+    Wait For Appian Page To Completely Load
+    log to console    Successful Login!
+
+
+Click On File A Case
+    wait until element is visible    ${fileacase}    10s
+    click element    ${fileacase}
+
 
 Click on My Case
-
+    wait until element is visible    ${my_case}    10s
     click element    ${my_case}
 
-Employer Dashboard Header Validate
-    set selenium speed    3
-    page should contain    ${Employer_header}
+
+Validate Employer Dashboard Header
+    page should contain element    ${Employer_header}
+
 
 Click on Case Id In Employer Home Page
-
+    wait until element is visible    ${caseid}    10s
     click element    ${caseid}
-
-
-
-
-

@@ -3,12 +3,6 @@ Library  SeleniumLibrary
 Variables  ../PageObjects/reviewandsubmit.py
 
 *** Keywords ***
-Review and Submit page header
-
-    page should contain    ${rs_header}
-
-Click on review and submit page continue button
-
-    click element    ${btn_rs_continue}
-
-
+Validate Review and Submit page header
+    wait until element is visible    ${rs_header}    10s
+    page should contain element    ${rs_header}
