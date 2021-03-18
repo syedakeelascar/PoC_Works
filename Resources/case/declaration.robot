@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables  ../PageObjects/declaration.py
+Variables  ../../PageObjects/case/declaration.py
 
 *** Keywords ***
 Click on checkbox and Ok button

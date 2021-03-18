@@ -5,10 +5,10 @@ Variables    ../TestData/testd.py
 
 *** Keywords ***
 Open application
-    open browser    ${url}    ${browser}
+    open browser    ${application_url}    ${browser}
     maximize browser window
     Set Selenium Timeout    ${selenium_timeout}
-    Log To Console    Application opened: ${url}
+    Log To Console    Application opened: ${application_url}
 
 
 Enter Username

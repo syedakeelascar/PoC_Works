@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables  ../PageObjects/paymentreview.py
+Variables  ../../PageObjects/case/paymentreview.py
 
 *** Keywords ***
 Validate Payment Review Page

@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables  ../PageObjects/casedetails.py
+Variables  ../../PageObjects/case/casedetails.py
 
 *** Keywords ***
 Validate Case Details Page header

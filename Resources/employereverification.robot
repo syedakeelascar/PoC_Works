@@ -1,7 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  FakerLibrary
-Library    resources_common/common_custom_keywords.py
+Library    common/common_custom_keywords.py
 Variables  ../PageObjects/employereverification.py
 
 *** Keywords ***

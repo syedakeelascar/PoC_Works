@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables  ../PageObjects/employeedetails.py
+Variables  ../../PageObjects/case/employeedetails.py
 
 *** Keywords ***
 Validate Employee Details page header

@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables  ../PageObjects/companydetails.py
+Variables  ../../PageObjects/case/companydetails.py
 
 *** Keywords ***
 Validate Company Details page header

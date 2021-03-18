@@ -1,8 +1,8 @@
 *** Settings ***
 Library  SeleniumLibrary
-Library    resources_common/common_custom_keywords.py
-Resource    resources_common/common_keywords.resource
-Variables  ../PageObjects/caseandclaimtype.py
+Library    ../common/common_custom_keywords.py
+Resource    ../common/common_keywords.resource
+Variables  ../../PageObjects/case/caseandclaimtype.py
 
 *** Keywords ***
 Randomly select a case type

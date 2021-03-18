@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables  ../PageObjects/acknowledgementPage.py
+Variables  ../../PageObjects/case/acknowledgementPage.py
 
 *** Keywords ***
 Validate Acknowledgement page header

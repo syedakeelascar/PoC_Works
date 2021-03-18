@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
-Variables  ../PageObjects/reviewandsubmit.py
+Variables  ../../PageObjects/case/reviewandsubmit.py
 
 *** Keywords ***
 Validate Review and Submit page header

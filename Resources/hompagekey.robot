@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource    resources_common/common_keywords.resource
+Resource    common/common_keywords.resource
 Variables    ../PageObjects/homePage.py
 Variables    ../PageObjects/employermycase.py
 

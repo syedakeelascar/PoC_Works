@@ -1,7 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
-Library    resources_common/common_custom_keywords.py
-Variables  ../PageObjects/makepayment.py
+Library    ../common/common_custom_keywords.py
+Variables  ../../PageObjects/case/makepayment.py
 
 *** Keywords ***
 Validate Make Payment Page
