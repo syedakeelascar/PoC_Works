@@ -8,7 +8,7 @@ Resource    common_utils.resource
 
 *** Variables ***
 #####     SELENIUM VARIABLES     #####
-${SELENIUM_TIMEOUT}    2 minutes
+${SELENIUM_TIMEOUT}    30 seconds
 
 #####     TEST SUITE VARIABLES     #####
 ${IS_PREV_TEST_CRIT}          ${true}

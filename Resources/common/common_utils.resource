@@ -9,11 +9,12 @@ Resource    common_variables.resource
 *** Keywords ***
 #####     BROWSER KEYWORDS     #####
 Open Chrome Browser
-    [Documentation]    Starts the chrome driver for execution of scripts. Also sets the default timeout to 180 seconds.
+    [Documentation]    Opens an instance of webdriver for Chrome. By default it would launch headless version.
 
+    ${driver_path}=    Get Chromedriver Path
     ${chrome_options}=   Set Chrome Options
-    Create Webdriver    Chrome    chrome_options=${chrome_options}
-    Set Selenium Timeout   ${SELENIUM_TIMEOUT}
+    Create Webdriver    Chrome    chrome_options=${chrome_options}    executable_path=${driver_path}
+    set selenium timeout    ${SELENIUM_TIMEOUT}
 
 
 #####     TEST SUITE KEYWORDS     #####

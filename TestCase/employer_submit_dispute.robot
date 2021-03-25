@@ -5,7 +5,7 @@ Resource  ../Resources/employerclaimsummary.robot
 Resource  ../Resources/employereverification.robot
 Variables  ../TestData/testd.py
 
-Suite Setup    Open application
+Suite Setup    Open iWorks Application    ${application_url}
 Suite Teardown    Close All Browsers
 
 Documentation    Login as a Employer, Validate a claim, submit dispute and logout from the application.

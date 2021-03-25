@@ -1,19 +1,9 @@
 *** Settings ***
 Library    SeleniumLibrary
-Library    common/common_custom_keywords.py
 Variables    ../PageObjects/loginPage.py
 Variables    ../TestData/testd.py
 
 *** Keywords ***
-Open application
-
-    ${driver_path}=   Run Keyword If    '${browser}'=='chrome'    Get Chromedriver Path
-    open browser    url=${application_url}    browser=${browser}   executable_path=${driver_path}
-    maximize browser window
-    Set Selenium Timeout    ${selenium_timeout}
-    Log To Console    Application opened: ${application_url}
-
-
 Enter Username
     [Arguments]    ${username}
     Input Text    ${txt_un}    ${username}

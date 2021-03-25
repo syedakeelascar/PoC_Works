@@ -24,41 +24,41 @@ def get_chromedriver_path():
 
 
 def set_chrome_options():
-    chromeOptions = webdriver.ChromeOptions()
+    chrome_options = webdriver.ChromeOptions()
     # Prefs to disable password/credentials saving alert (for Appian login)
     prefs = {"credentials_enable_service": False,
              'profile': {'password_manager_enabled': False}}
-    chromeOptions.add_experimental_option("prefs", prefs)
-    chromeOptions.add_argument("--no-sandbox")
-    chromeOptions.add_argument("--headless")
-    chromeOptions.add_argument("--disable-dev-shm-usage")
-    chromeOptions.add_argument("--start-maximized")
-    chromeOptions.add_argument("--window-size=1280,1080")
+    chrome_options.add_experimental_option("prefs", prefs)
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--window-size=1280,1080")
     # Disable all extensions before running
-    chromeOptions.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-extensions")
     # Ignore certificate errors (Appian side self-signed)
-    chromeOptions.add_argument("--ignore-certificate-errors")
+    chrome_options.add_argument("--ignore-certificate-errors")
     # Disable insecure content error
-    chromeOptions.add_argument("--allow-running-insecure-content")
+    chrome_options.add_argument("--allow-running-insecure-content")
     # Add additional switches/arguments below where necessary
     # reference: http://peter.sh/experiments/chromium-command-line-switches
-    return chromeOptions
+    return chrome_options
 
 
-def generate_random_integer_in_range(min=1, max=sys.maxsize):
-    min = int(min)
-    max = int(max)
-    integer = random.randint(min, max)
+def generate_random_integer_in_range(minimum=1, maximum=sys.maxsize):
+    minimum = int(minimum)
+    maximum = int(maximum)
+    integer = random.randint(minimum, maximum)
     integer = str(integer)
     return integer
 
 
-def generate_random_float_with_custom_decimal(min=1, max=10000, roundTo=2):
-    min = float(min)
-    max = float(max)
-    roundTo = int(roundTo)
-    output = round(random.uniform(min, max), roundTo)
-    output = str('{:.{}f}'.format(output, roundTo))
+def generate_random_float_with_custom_decimal(minimum=1, maximum=10000, decimals=2):
+    minimum = float(minimum)
+    maximum = float(maximum)
+    decimals = int(decimals)
+    output = round(random.uniform(minimum, maximum), decimals)
+    output = str('{:.{}f}'.format(output, decimals))
     return output
 
 
@@ -119,9 +119,9 @@ def get_random_country():
     return get_random_item_from_list(country_list)
 
 
-def get_random_countries(numItems):
+def get_random_countries(no_of_items):
     country_list = custom_country_list()
-    return get_random_items_from_list(country_list, numItems)
+    return get_random_items_from_list(country_list, no_of_items)
 
 
 def get_country_code(country):
@@ -144,27 +144,28 @@ def get_country_currency_code(country='singapore'):
     return convert_dict.get(country.strip().lower(), convert_dict.get(default))
 
 
-def generate_currency_code_and_exchange_rate(includeSGD=True, exchange_rate_decimals=9):
-    currencyCode = get_random_currency_code(includeSGD)
+def generate_currency_code_and_exchange_rate(include_sgd=True, exchange_rate_decimals=9):
+    currency_code = get_random_currency_code(include_sgd)
 
-    if currencyCode == "SGD" or currencyCode == "NZD":
-        exchangeRate = generate_random_exchange_rate(1, 1, exchange_rate_decimals)
-    elif currencyCode == "USD" or currencyCode == "EUR" or currencyCode == "GBP":
-        exchangeRate = generate_random_exchange_rate(1, 2.1, exchange_rate_decimals)
+    if currency_code == "SGD" or currency_code == "NZD":
+        exchange_rate = generate_random_exchange_rate(1, 1, exchange_rate_decimals)
+    elif currency_code == "USD" or currency_code == "EUR" or currency_code == "GBP":
+        exchange_rate = generate_random_exchange_rate(1, 2.1, exchange_rate_decimals)
     else:
-        exchangeRate = generate_random_exchange_rate(0.000000001, 1, exchange_rate_decimals)
+        exchange_rate = generate_random_exchange_rate(0.000000001, 1, exchange_rate_decimals)
 
-    return currencyCode, exchangeRate
-
-
-def get_random_currency_code(includeSGD=False):
-    currencyCode = ["USD", "EUR", "NZD", "GBP", "CNY", "JPY", "THB"]
-    if includeSGD:
-        currencyCode.append('SGD')
-    return random.choice(currencyCode)
+    return currency_code, exchange_rate
 
 
-def get_random_valid_address(is_valid=True, is_no_block=True, is_multiple=True, is_long_street=True, is_level_unit_random=True):
+def get_random_currency_code(include_sgd=False):
+    currency_code = ["USD", "EUR", "NZD", "GBP", "CNY", "JPY", "THB"]
+    if include_sgd:
+        currency_code.append('SGD')
+    return random.choice(currency_code)
+
+
+def get_random_valid_address(is_valid=True, is_no_block=True, is_multiple=True,
+                             is_long_street=True, is_level_unit_random=True):
     """
             Order of array sequence (top->bottom, left->right)
                 <Building Name>     SandCrawler,
@@ -222,7 +223,7 @@ def get_random_valid_address(is_valid=True, is_no_block=True, is_multiple=True, 
     return random.choice(address)
 
 
-def generate_random_nric(type='Singaporean'):
+def generate_random_nric(nationality='Singaporean'):
     """
     Based on the NRIC formula checksum for last character of NRIC
     Returns a random NRIC value generated with the following guidelines:
@@ -252,7 +253,7 @@ def generate_random_nric(type='Singaporean'):
         2, 7, 6, 5, 4, 3, 2
     ]
 
-    if type != 'Foreigner':
+    if nationality != 'Foreigner':
         nric_first = get_random_item_from_list(nric_local_firstchar_list)
     else:
         nric_first = get_random_item_from_list(nric_foreign_firstchar_list)
@@ -270,7 +271,7 @@ def generate_random_nric(type='Singaporean'):
     mytotal = mytotal + offset_value
     remainder = mytotal % 11
 
-    if type != 'Foreigner':
+    if nationality != 'Foreigner':
         nric_last = nric_local_lastchar_list[remainder]
     else:
         nric_last = nric_foreign_lastchar_list[remainder]
@@ -487,9 +488,9 @@ def date_difference_in_months(d1, d2):
         return diff
 
 
-def move_focus_to_element_position(locator, waitTime=10):
+def move_focus_to_element_position(locator, wait_time=10):
     selenium = BuiltIn().get_library_instance('SeleniumLibrary')
-    selenium.wait_until_element_is_visible(locator, waitTime)
+    selenium.wait_until_element_is_visible(locator, wait_time)
     ele = selenium.find_element(locator, True, True, None)
     loc = ele.location
     y = loc.get('y')
@@ -546,8 +547,8 @@ def format_money(value, places=2, curr='', sep=',', dp='.',
     return ''.join(reversed(result))
 
 
-def generate_random_exchange_rate(low=0, high=6, exchange_rate_decimals=9):
-    custom_rate = str(generate_random_float_with_custom_decimal(low, high, exchange_rate_decimals))
+def generate_random_exchange_rate(minimum=0, maximum=6, exchange_rate_decimals=9):
+    custom_rate = str(generate_random_float_with_custom_decimal(minimum, maximum, exchange_rate_decimals))
     return custom_rate
 
 
@@ -587,10 +588,10 @@ def pdf_read_to_text_with_filename(filename):
     return text
 
 
-def split_string_with_splitchar(str, splitstr1, splitstr2):
+def split_string_with_splitchar(input_string, splitstr1, splitstr2):
     print('Splitstr1: ', splitstr1)
     print('Splitstr2: ', splitstr2)
-    tempstr1 = str.split(splitstr1)[1]
+    tempstr1 = input_string.split(splitstr1)[1]
     templist = tempstr1.split(splitstr2)[0]
     templist = templist.replace('\n\n', '\n')
     templist = templist.split('\n')

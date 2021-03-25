@@ -1,15 +1,18 @@
 *** Settings ***
-Resource    common_variables.resource
+Library    common_custom_keywords.py
+Resource    common_utils.resource
 Variables    ../../PageObjects/commonObjects.py
 
 *** Keywords ***
 Open iWorks Application
     [Documentation]    Opens the application URL.
+    [Arguments]    ${url}
 
-    Go To    ${APPIAN_SERVER}
+    Run Keyword If    '${browser}'=='chrome'    Open Chrome Browser
+    Go To    ${url}
     Run Keyword And Ignore Error    Alert Should Not Be Present
     Wait Until Element Is Visible    id=un    30s
-    Log To Console    Application opened: ${APPIAN_SERVER}
+    Log To Console    Application opened: ${url}
 
 
 Wait For Appian Page To Completely Load

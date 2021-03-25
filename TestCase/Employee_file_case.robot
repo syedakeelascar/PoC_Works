@@ -14,7 +14,7 @@ Resource    ../Resources/case/makepaymentkey.robot
 Resource    ../Resources/case/acknowledgementkey.robot
 Variables    ../TestData/testd.py
 
-Suite Setup    Open application
+Suite Setup    Open iWorks Application
 Suite Teardown    Close All Browsers
 
 Documentation    Login as an employee, file a case and logout from the application.
