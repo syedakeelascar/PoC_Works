@@ -14,6 +14,13 @@ from robot.libraries.BuiltIn import BuiltIn
 from selenium import webdriver
 from tika import parser
 import time
+from webdriver_manager.chrome import ChromeDriverManager
+
+
+def get_chromedriver_path():
+    driver_path = ChromeDriverManager().install()
+    print(driver_path)
+    return driver_path
 
 
 def set_chrome_options():
